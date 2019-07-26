@@ -123,7 +123,6 @@
 
   <nav class="action-nav">
     <button (click)="showAddTaskBar()"
-            class="bg-200"
             color="lighter"
             mat-mini-fab
             [title]="T.MH.ADD_NEW_TASK|translate">
@@ -131,11 +130,27 @@
     </button>
 
     <button (click)="bookmarkService.toggleBookmarks()"
-            class="bg-200 show-xs-only"
+            class="show-xs-only"
             color="lighter"
             mat-mini-fab
             [title]="T.MH.TOGGLE_SHOW_BOOKMARKS|translate">
       <mat-icon>bookmark</mat-icon>
+    </button>
+
+    <button *ngIf="(projectService.isJiraEnabled$|async)"
+            (click)="bookmarkService.toggleBookmarks()"
+            class="hide-xs"
+            color="lighter"
+            mat-mini-fab>
+      <mat-icon svgIcon="jira"></mat-icon>
+    </button>
+
+    <button *ngIf="(projectService.isGithubEnabled$|async)"
+            (click)="bookmarkService.toggleBookmarks()"
+            class="hide-xs"
+            color="lighter"
+            mat-mini-fab>
+      <mat-icon svgIcon="github"></mat-icon>
     </button>
 
     <button (click)="toggleShowNotes()"

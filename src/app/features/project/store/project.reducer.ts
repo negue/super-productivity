@@ -51,7 +51,7 @@ export const selectCurrentProject = createSelector(selectProjectFeatureState,
 export const selectProjectIssueCfgs = createSelector(selectCurrentProject, (project) => project.issueIntegrationCfgs);
 
 export const selectProjectJiraCfg = createSelector(selectProjectIssueCfgs, (issueProviderCfgs) => issueProviderCfgs.JIRA);
-export const selectProjectJiraIsEnabled = createSelector(selectProjectJiraCfg, (jiraCfg: JiraCfg): boolean => jiraCfg.isEnabled);
+export const selectProjectJiraIsEnabled = createSelector(selectProjectJiraCfg, (jiraCfg: JiraCfg): boolean => !!jiraCfg.isEnabled);
 
 export const selectProjectGithubCfg = createSelector(selectProjectIssueCfgs, (issueProviderCfgs) => issueProviderCfgs.GITHUB);
 export const selectProjectGithubIsEnabled = createSelector(selectProjectGithubCfg, (gitCfg: GithubCfg): boolean => gitCfg && gitCfg.repo && gitCfg.repo.length > 2);
