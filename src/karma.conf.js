@@ -31,9 +31,11 @@ module.exports = function (config) {
       'ChromeHeadless': {
         base: 'Chrome',
         flags: [
+          // We must disable the Chrome sandbox when running Chrome inside Docker
+          // (Chrome's sandbox needs more permissions than Docker allows by default)
+          '--headless',
           '--no-sandbox',
           '--disable-gpu',
-          '--enable-logging',
           '--no-default-browser-check',
           '--no-first-run',
           '--disable-default-apps',
