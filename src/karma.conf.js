@@ -31,10 +31,20 @@ module.exports = function (config) {
       'ChromeHeadless': {
         base: 'Chrome',
         flags: [
-          '--headless',
+          '--no-sandbox',
           '--disable-gpu',
+          '--enable-logging',
+          '--no-default-browser-check',
+          '--no-first-run',
+          '--disable-default-apps',
+          '--disable-popup-blocking',
+          '--disable-translate',
+          '--disable-background-timer-throttling',
+          '--disable-renderer-backgrounding',
+          '--disable-device-discovery-notifications',
           // Without a remote debugging port, Google Chrome exits immediately.
-          '--remote-debugging-port=9222'
+          '--remote-debugging-port=9222',
+          '--disable-web-security',
         ],
         debug: true
       }
