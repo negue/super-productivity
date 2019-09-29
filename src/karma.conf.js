@@ -25,17 +25,20 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadlessNoSandbox'],
+    browsers: ['ChromeHeadless'],
     singleRun: false,
     customLaunchers: {
-      ChromeNoSandbox: {
+      'ChromeHeadless': {
         base: 'Chrome',
-        flags: ['--no-sandbox']
-      },
-      ChromeNoSandboxHeadless: {
-        base: 'ChromeHeadless',
-        flags: ['--no-sandbox']
+        flags: [
+          '--headless',
+          '--disable-gpu',
+          // Without a remote debugging port, Google Chrome exits immediately.
+          '--remote-debugging-port=9222'
+        ],
+        debug: true
       }
     },
+    browserNoActivityTimeout: 120000,
   });
 };
